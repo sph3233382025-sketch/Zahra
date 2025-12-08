@@ -18,6 +18,9 @@ class Message(db.Model):
     # Message content
     text = db.Column(db.Text, nullable=False)
     
+    # Target name (for personalization)
+    target_name = db.Column(db.String(100), default="Special Someone")
+    
     # Customization settings (JSON stored as string for simplicity)
     primary_color = db.Column(db.String(7), default="#FF69B4")  # Hex color
     secondary_color = db.Column(db.String(7), default="#FFB6D9")
@@ -51,6 +54,7 @@ class Message(db.Model):
             'id': self.id,
             'link_id': self.link_id,
             'text': self.text,
+            'targetName': self.target_name,
             'primaryColor': self.primary_color,
             'secondaryColor': self.secondary_color,
             'backgroundColor': self.background_color,

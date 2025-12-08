@@ -23,6 +23,7 @@ def create_message():
         message = Message(
             link_id=Message.generate_link_id(),
             text=data.get('text'),
+            target_name=data.get('targetName', 'Special Someone'),
             primary_color=data.get('primaryColor', '#FF69B4'),
             secondary_color=data.get('secondaryColor', '#FFB6D9'),
             background_color=data.get('backgroundColor', '#0f0c29'),

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message from Blushy 🤭</title>
+    <title>Message for {{ message.target_name }} from Blushy 🤭</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -66,11 +66,36 @@
             animation: messageIn {{ message.animation_duration }}ms ease-out forwards;
         }
 
+        .message-header {
+            margin-bottom: 30px;
+            animation: slideInDown {{ message.animation_duration / 2 }}ms ease-out forwards;
+        }
+
+        .recipient-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: {{ message.secondary_color }};
+            text-shadow: 0 0 20px {{ message.secondary_color }}80;
+            letter-spacing: 1px;
+            animation: fadeIn {{ message.animation_duration / 3 }}ms ease-out forwards;
+        }
+
         .emoji-container {
             margin-top: 40px;
             font-size: 60px;
             animation: emojiPop {{ message.animation_duration }}ms ease-out forwards;
             animation-delay: {{ message.animation_duration / 2 }}ms;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .emoji {
@@ -202,6 +227,9 @@
     <canvas id="canvas"></canvas>
 
     <div class="message-container">
+        <div class="message-header">
+            <div class="recipient-name">💌 For {{ message.target_name }}</div>
+        </div>
         <div class="message-text">{{ message.text }}</div>
         <div class="emoji-container">
             {% for emoji in message.emojis %}

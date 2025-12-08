@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==================== DOM ELEMENTS ====================
 const messageForm = document.getElementById('messageForm');
 const messageText = document.getElementById('messageText');
+const targetName = document.getElementById('targetName');
 const charCount = document.getElementById('charCount');
 const charFill = document.getElementById('charFill');
 const toggleCustomization = document.getElementById('toggleCustomization');
@@ -375,6 +376,7 @@ messageForm.addEventListener('submit', async (e) => {
             },
             body: JSON.stringify({
                 text: messageText.value,
+                targetName: targetName.value.trim() || 'Special Someone',
                 primaryColor: inputs.primaryColor.value,
                 secondaryColor: inputs.secondaryColor.value,
                 backgroundColor: inputs.backgroundColor.value,
