@@ -1,3 +1,98 @@
+// ==================== DYNAMIC THEME SYSTEM ====================
+const themes = [
+    {
+        name: 'Pink Dreams',
+        primary: '#ff6b9d',
+        secondary: '#ffd60a',
+        tertiary: '#00d9ff',
+        bgPrimary: '#0a0e27',
+        bgSecondary: '#1a1f3a',
+        gradient: 'linear-gradient(135deg, #ff6b9d 0%, #ffd60a 100%)'
+    },
+    {
+        name: 'Purple Haze',
+        primary: '#a78bfa',
+        secondary: '#ec4899',
+        tertiary: '#06b6d4',
+        bgPrimary: '#0f0a1e',
+        bgSecondary: '#1e1533',
+        gradient: 'linear-gradient(135deg, #a78bfa 0%, #ec4899 100%)'
+    },
+    {
+        name: 'Ocean Breeze',
+        primary: '#06b6d4',
+        secondary: '#3b82f6',
+        tertiary: '#8b5cf6',
+        bgPrimary: '#0a1628',
+        bgSecondary: '#152238',
+        gradient: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)'
+    },
+    {
+        name: 'Sunset Glow',
+        primary: '#f59e0b',
+        secondary: '#ef4444',
+        tertiary: '#ec4899',
+        bgPrimary: '#1a0f0a',
+        bgSecondary: '#2d1810',
+        gradient: 'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)'
+    },
+    {
+        name: 'Emerald Forest',
+        primary: '#10b981',
+        secondary: '#06b6d4',
+        tertiary: '#8b5cf6',
+        bgPrimary: '#0a1e15',
+        bgSecondary: '#132d23',
+        gradient: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)'
+    },
+    {
+        name: 'Midnight Magic',
+        primary: '#8b5cf6',
+        secondary: '#6366f1',
+        tertiary: '#ec4899',
+        bgPrimary: '#0f0a1e',
+        bgSecondary: '#1a1333',
+        gradient: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)'
+    },
+    {
+        name: 'Coral Reef',
+        primary: '#fb7185',
+        secondary: '#fbbf24',
+        tertiary: '#34d399',
+        bgPrimary: '#1e0a14',
+        bgSecondary: '#2d1522',
+        gradient: 'linear-gradient(135deg, #fb7185 0%, #fbbf24 100%)'
+    },
+    {
+        name: 'Northern Lights',
+        primary: '#34d399',
+        secondary: '#60a5fa',
+        tertiary: '#a78bfa',
+        bgPrimary: '#0a1e1a',
+        bgSecondary: '#142d28',
+        gradient: 'linear-gradient(135deg, #34d399 0%, #60a5fa 100%)'
+    }
+];
+
+function applyRandomTheme() {
+    const theme = themes[Math.floor(Math.random() * themes.length)];
+    const root = document.documentElement;
+    
+    root.style.setProperty('--accent-primary', theme.primary);
+    root.style.setProperty('--accent-secondary', theme.secondary);
+    root.style.setProperty('--accent-tertiary', theme.tertiary);
+    root.style.setProperty('--bg-primary', theme.bgPrimary);
+    root.style.setProperty('--bg-secondary', theme.bgSecondary);
+    root.style.setProperty('--gradient-primary', theme.gradient);
+    root.style.setProperty('--gradient-secondary', `linear-gradient(135deg, ${theme.tertiary} 0%, ${theme.primary} 100%)`);
+    root.style.setProperty('--shadow-glow', `0 0 20px ${theme.primary}40`);
+    
+    console.log(`🎨 Theme applied: ${theme.name}`);
+}
+
+// Apply theme on page load
+applyRandomTheme();
+
 // ==================== DOM ELEMENTS ====================
 const messageForm = document.getElementById('messageForm');
 const messageText = document.getElementById('messageText');

@@ -217,6 +217,92 @@
     </div>
 
     <script>
+        // ==================== DYNAMIC THEME SYSTEM ====================
+        const themes = [
+            {
+                name: 'Pink Dreams',
+                primary: '#ff6b9d',
+                secondary: '#ffd60a',
+                tertiary: '#00d9ff',
+                bgPrimary: '#0a0e27',
+                bgSecondary: '#1a1f3a'
+            },
+            {
+                name: 'Purple Haze',
+                primary: '#a78bfa',
+                secondary: '#ec4899',
+                tertiary: '#06b6d4',
+                bgPrimary: '#0f0a1e',
+                bgSecondary: '#1e1533'
+            },
+            {
+                name: 'Ocean Breeze',
+                primary: '#06b6d4',
+                secondary: '#3b82f6',
+                tertiary: '#8b5cf6',
+                bgPrimary: '#0a1628',
+                bgSecondary: '#152238'
+            },
+            {
+                name: 'Sunset Glow',
+                primary: '#f59e0b',
+                secondary: '#ef4444',
+                tertiary: '#ec4899',
+                bgPrimary: '#1a0f0a',
+                bgSecondary: '#2d1810'
+            },
+            {
+                name: 'Emerald Forest',
+                primary: '#10b981',
+                secondary: '#06b6d4',
+                tertiary: '#8b5cf6',
+                bgPrimary: '#0a1e15',
+                bgSecondary: '#132d23'
+            },
+            {
+                name: 'Midnight Magic',
+                primary: '#8b5cf6',
+                secondary: '#6366f1',
+                tertiary: '#ec4899',
+                bgPrimary: '#0f0a1e',
+                bgSecondary: '#1a1333'
+            },
+            {
+                name: 'Coral Reef',
+                primary: '#fb7185',
+                secondary: '#fbbf24',
+                tertiary: '#34d399',
+                bgPrimary: '#1e0a14',
+                bgSecondary: '#2d1522'
+            },
+            {
+                name: 'Northern Lights',
+                primary: '#34d399',
+                secondary: '#60a5fa',
+                tertiary: '#a78bfa',
+                bgPrimary: '#0a1e1a',
+                bgSecondary: '#142d28'
+            }
+        ];
+
+        function applyRandomTheme() {
+            const theme = themes[Math.floor(Math.random() * themes.length)];
+            document.body.style.background = `linear-gradient(135deg, ${theme.bgPrimary} 0%, ${theme.bgSecondary} 100%)`;
+            
+            // Update button colors
+            const buttons = document.querySelectorAll('.action-btn');
+            buttons.forEach(btn => {
+                if (btn.classList.contains('btn-primary')) {
+                    btn.style.background = `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`;
+                }
+            });
+            
+            console.log(`🎨 Viewer theme: ${theme.name}`);
+        }
+
+        // Apply theme immediately
+        applyRandomTheme();
+
         const message = {{ message.to_dict()|tojson }};
 
         function createConfetti() {
